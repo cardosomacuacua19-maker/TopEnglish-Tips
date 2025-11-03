@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TopEnglish Tips</title>
+<style>
+body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f4f4; }
+header { background:#1E90FF; color:white; text-align:center; padding:20px 10px; }
+header h1 { margin:0; font-size:2em; }
+header p { margin:5px 0 0 0; font-style:italic; color:#FFD700; }
+nav { display:flex; justify-content:center; background:#333; flex-wrap:wrap; }
+nav a { color:white; padding:12px 20px; text-decoration:none; }
+nav a:hover { background:#ddd; color:black; }
+.container { padding:15px; max-width:1000px; margin:auto; }
+.card { background:white; padding:15px; margin:15px 0; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+.btn { display:inline-block; padding:10px 20px; background:#1E90FF; color:white; text-decoration:none; border-radius:5px; margin-top:10px; cursor:pointer; }
+.btn:hover { background:#187bcd; }
+.premium { border:2px solid #FFD700; }
+.premium h3 { color:#DAA520; }
+#loginForm { max-width:400px; margin:20px auto; padding:20px; background:white; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+#loginForm input, #loginForm select, #loginForm textarea { width:100%; padding:8px; margin:5px 0; border-radius:4px; border:1px solid #ccc; }
+footer { text-align:center; padding:15px; background:#333; color:white; margin-top:20px; }
+.level-card { border:1px solid #1E90FF; padding:10px; border-radius:6px; margin:10px 0; background:#f0f8ff; }
+.level-card h4 { margin:5px 0; color:#1E90FF; }
+@media(max-width:600px){ nav { flex-direction:column; } }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>TopEnglish Tips</h1>
+    <p>From the bottom to the fluency</p>
+</header>
+
+<nav>
+    <a href="#gratuitos">Gratuitos</a>
+    <a href="#premium">Premium</a>
+    <a href="#contato">Contato</a>
+    <a href="#aula">Aula ao Vivo</a>
+</nav>
+
+<!-- Login -->
+<div class="container" id="loginContainer">
+    <div id="loginForm">
+        <h3>Login de Aluno Aprovado</h3>
+        <p>Entre com o usuário e senha fornecidos por email</p>
+        <input type="text" id="username" placeholder="Usuário">
+        <input type="password" id="password" placeholder="Senha">
+        <button class="btn" onclick="login()">Entrar</button>
+        <p id="loginMessage" style="color:red;"></p>
+    </div>
+</div>
+
+<!-- Conteúdo do Site -->
+<div class="container" id="contentContainer" style="display:none;">
+
+    <!-- Conteúdos Gratuitos -->
+    <section id="gratuitos" class="card">
+        <h3>Conteúdos Gratuitos</h3>
+        <p>Artigos, resumos e exercícios gratuitos para todos os alunos aprovados.</p>
+        <a href="#" class="btn">Acessar Aula Gratuita</a>
+    </section>
+
+    <!-- Conteúdos Premium -->
+    <section id="premium" class="card premium">
+        <h3>Conteúdos Premium</h3>
+        <p>Escolha seu nível de assinatura para desbloquear ebooks e videoaulas.</p>
+
+        <!-- Níveis -->
+        <div class="level-card">
+            <h4>Básico - 700 Mts</h4>
+            <p>Inclui: ebook + video aula</p>
+            <button class="btn" onclick="selecionarNivel('basico',700)">Selecionar Básico</button>
+        </div>
+        <div class="level-card">
+            <h4>Intermediário - 800 Mts</h4>
+            <p>Inclui: ebook + video aula</p>
+            <button class="btn" onclick="selecionarNivel('intermedio',800)">Selecionar Intermediário</button>
+        </div>
+        <div class="level-card">
+            <h4>Avançado - 900 Mts</h4>
+            <p>Inclui: ebook + video aula</p>
+            <button class="btn" onclick="selecionarNivel('avancado',900)">Selecionar Avançado</button>
+        </div>
+
+        <!-- Forma de pagamento -->
+        <div style="margin-top:15px;" id="metodoPagamento" style="display:none;">
+            <p>Escolha a forma de pagamento:</p>
+            <button class="btn" onclick="pagar('paypal')">Pagar com PayPal</button>
+            <button class="btn" onclick="pagar('banco')">Transferência Bancária</button>
+            <button class="btn" onclick="pagar('carteira')">Carteira Móvel</button>
+        </div>
+
+        <p id="mensagemPagamento" style="margin-top:15px; color:green;"></p>
+
+        <!-- Conteúdo Premium Simulado -->
+        <div id="premiumContent" style="display:none; margin-top:15px;">
+            <h4>Seu conteúdo premium está liberado!</h4>
+            <ul>
+                <li>📘 Ebook de Inglês Avançado</li>
+                <li>🎥 Videoaula de Conversação</li>
+                <li>📗 Resumos Exclusivos</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="card">
+        <h3>Contato</h3>
+        <form>
+            <input type="text" placeholder="Seu nome">
+            <input type="email" placeholder="Seu email">
+            <textarea placeholder="Sua mensagem"></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <!-- Aula ao Vivo -->
+    <section id="aula" class="card">
+        <h3>Aula ao Vivo</h3>
+        <p>Participe da nossa aula online via Google Meet:</p>
+        <a href="https://meet.google.com/ficticio-link" class="btn" target="_blank">Entrar na Reunião</a>
+    </section>
+
+</div>
+
+<footer>
+    <p>© 2025 TopEnglish Tips. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+// Usuários aprovados
+const approvedUsers = [
+    {username:"aluno1", password:"1234"},
+    {username:"aluno2", password:"abcd"}
+];
+
+let nivelSelecionado = "";
+let valorSelecionado = 0;
+
+// Login
+function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    const message = document.getElementById("loginMessage");
+    const match = approvedUsers.find(u => u.username === user && u.password === pass);
+
+    if(match){
+        document.getElementById("loginContainer").style.display = "none";
+        document.getElementById("contentContainer").style.display = "block";
+    } else {
+        message.textContent = "Usuário ou senha incorretos. Tente novamente.";
+    }
+}
+
+// Seleção de nível
+function selecionarNivel(nivel, valor){
+    nivelSelecionado = nivel;
+    valorSelecionado = valor;
+    document.getElementById("metodoPagamento").style.display = "block";
+    document.getElementById("mensagemPagamento").innerText = `Você selecionou o nível ${nivel.toUpperCase()} (${valor} Mts). Escolha o método de pagamento.`;
+}
+
+// Pagamento
+function pagar(metodo){
+    if(!nivelSelecionado){
+        alert("Por favor, selecione o nível de assinatura.");
+        return;
+    }
+
+    let mensagem = "";
+
+    if(metodo === "paypal"){
+        mensagem = `Redirecionando para PayPal para pagamento do nível ${nivelSelecionado.toUpperCase()} (${valorSelecionado} Mts).`;
+        // Simula liberação instantânea
+        setTimeout(()=>{ document.getElementById("premiumContent").style.display = "block"; }, 2000);
+    } else if(metodo === "banco"){
+        mensagem = `Faça transferência de ${valorSelecionado} Mts para o NIB do Millennium BIM. Envie comprovante por email para liberação do conteúdo.`;
+    } else if(metodo === "carteira"){
+        mensagem = `Faça o pagamento de ${valorSelecionado} Mts via M-Pesa: 845758034 ou Emola: 871612735. Envie comprovante por email para liberação do conteúdo.`;
+    }
+
+    document.getElementById("mensagemPagamento").innerText = mensagem;
+}
+</script>
+
+</body>
+</html>
